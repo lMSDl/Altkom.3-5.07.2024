@@ -12,15 +12,15 @@ namespace Altkom._3_5._07._2024.DesignPatterns.Creational.AbstractFactory
         {
             Order order;
 
-            order = new Order("Honda", nameof(ISedan), "compact");
+            order = new Order(new HondaFactory(), nameof(ISedan), "compact");
             Console.WriteLine(order.ManufacturedCarName());
 
 
-            order = new Order("Toyota", nameof(ISedan), "compact");
+            order = new Order(new ToyotaFactory(), nameof(ISedan), "compact");
             Console.WriteLine(order.ManufacturedCarName());
 
 
-            order = new Order("Toyota", nameof(ISuv), "full");
+            order = new Order(new ToyotaFactory(), nameof(ISuv), "full");
             Console.WriteLine(order.ManufacturedCarName());
 
         }
