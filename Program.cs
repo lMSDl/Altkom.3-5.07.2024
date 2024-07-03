@@ -1,6 +1,19 @@
 ﻿
 
 using Altkom._3_5._07._2024.DesignPrinciples;
+using Altkom._3_5._07._2024.SOLID.L;
+
+int a = 4;
+int b = 9;
+
+var rectangle = CreateRectangle(a, b);
+Console.WriteLine($"{a} * {b} = {rectangle.Area}");
+
+
+Rectangle CreateRectangle(int a, int b)
+{
+    return new Square {  A = a, B = b };
+}
 
 static void TestDesignPrinciples()
 {
