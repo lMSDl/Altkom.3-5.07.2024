@@ -7,33 +7,18 @@
         public bool Charge(int id, float amount)
         {
             var account = GetAccountById(id);
-            if (account == null)
-                return false;
-
-            if (GetBalance(id) + account.AllowedDebit < amount)
-                return false;
-
-            account.Outcome += amount;
-            return true;
-        }
-
-        private PaymentAccount? GetAccountById(int id)
-        {
-            return PaymentAccounts.Where(x => x.IsActive).SingleOrDefault(x => x.Id == id);
+            return account?.Charge(amount) ?? false;
         }
 
         public void Fund(int id, float amount)
         {
             var account = GetAccountById(id);
-            if (account == null)
-                return;
-            account.Income += amount;
+            account?.Fund(amount);
         }
 
-        public float? GetBalance(int id)
+        private PaymentAccount? GetAccountById(int id)
         {
-            var account = GetAccountById(id);
-            return account?.Income - account?.Outcome;
+            return PaymentAccounts.Where(x => x.IsActive).SingleOrDefault(x => x.Id == id);
         }
     }
 }
