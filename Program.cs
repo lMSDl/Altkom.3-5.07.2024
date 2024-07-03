@@ -17,8 +17,8 @@ static void TestDesignPrinciples()
     }
 
     var paymentService = new PaymentService();
-    paymentService.Fund(customer, 500);
-    if(!paymentService.Charge(customer, 100))
+    paymentService.Fund(customer.Account, 500);
+    if(!paymentService.Charge(customer.Account, 100))
     {
         Console.WriteLine("Brak środków na koncie");
     }    
