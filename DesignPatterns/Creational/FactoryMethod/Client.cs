@@ -15,25 +15,43 @@ namespace Altkom._3_5._07._2024.DesignPatterns.Creational.FactoryMethod
             var action = "Down";
             var floor = 5;
 
-            IElevatorOperation elevatorOperation = null;
-            switch (nameof(Elevator) + action)
+            elevator.Execute(action, floor);
+
+
+            action = "Up";
+            floor = 6;
+
+            elevator.Execute(action, floor);
+
+
+            action = "GoTo";
+            floor = 1;
+
+            elevator.Execute(action, floor);
+
+        }
+
+
+        public class MyElevator : Elevator
+        {
+
+            public override IElevatorOperation? GetOperation(string operation)
             {
-                case nameof(ElevatorDown):
-                    elevatorOperation = new ElevatorDown();
-                    break;
-                case nameof(ElevatorUp):
-                    elevatorOperation = new ElevatorUp();
-                    break;
-                case nameof(ElevatorGoTo):
-                    elevatorOperation = new ElevatorGoTo();
-                    break;
+                if(operation == "left")
+                {
+                    return new TurnLeft();
+                }
+
+                return base.GetOperation(operation);
             }
 
-            if (elevatorOperation != null)
+            class TurnLeft : IElevatorOperation
             {
-                elevator.Execute(elevatorOperation, floor);
+                public void Operate(int floor)
+                {
+                    Console.WriteLine($"Winda skręca w lewo na piętrze {floor}");
+                }
             }
-
         }
      }
 }
