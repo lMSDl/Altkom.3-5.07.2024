@@ -4,16 +4,6 @@
     {
         private ICollection<PaymentAccount> PaymentAccounts { get; } = [new PaymentAccount(1), new PaymentAccount(2), new PaymentAccount(3), new PaymentAccount(4), new PaymentAccount(5)];
 
-        public bool DeletePaymentAccount(PaymentAccount account)
-        {
-            return PaymentAccounts.Remove(account);
-        }
-
-        public PaymentAccount? FindByAllowedDebit(float debit)
-        {
-            return PaymentAccounts.SingleOrDefault(x => x.AllowedDebit == debit);
-        }
-
         public bool Charge(int id, float amount)
         {
             var account = GetAccountById(id);
