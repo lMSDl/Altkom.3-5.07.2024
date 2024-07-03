@@ -3,17 +3,11 @@
 using Altkom._3_5._07._2024.DesignPrinciples;
 using Altkom._3_5._07._2024.SOLID.L;
 
-int a = 4;
-int b = 9;
-
-var rectangle = CreateRectangle(a, b);
-Console.WriteLine($"{a} * {b} = {rectangle.Area}");
 
 
-Rectangle CreateRectangle(int a, int b)
-{
-    return new Square {  A = a, B = b };
-}
+Altkom._3_5._07._2024.DesignPatterns.Creational.Builder.Client.Execute();
+
+
 
 static void TestDesignPrinciples()
 {
@@ -31,9 +25,24 @@ static void TestDesignPrinciples()
 
     var paymentService = new PaymentService();
     paymentService.Fund(customer.Account, 500);
-    if(!paymentService.Charge(customer.Account, 100))
+    if (!paymentService.Charge(customer.Account, 100))
     {
         Console.WriteLine("Brak środków na koncie");
-    }    
+    }
 
+}
+
+static void LSP()
+{
+    int a = 4;
+    int b = 9;
+
+    var rectangle = CreateRectangle(a, b);
+    Console.WriteLine($"{a} * {b} = {rectangle.Area}");
+
+
+    Rectangle CreateRectangle(int a, int b)
+    {
+        return new Square { A = a, B = b };
+    }
 }
