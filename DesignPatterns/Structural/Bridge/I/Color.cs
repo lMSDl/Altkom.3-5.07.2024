@@ -8,9 +8,10 @@ namespace Altkom._3_5._07._2024.DesignPatterns.Structural.Bridge.I
 {
     internal abstract class Color
     {
+        public Brightness Brightness { get; set; }
         public override string ToString()
         {
-            return GetType().Name;
+            return (Brightness?.ToString() ?? "") + GetType().Name;
         }
     }
 }
