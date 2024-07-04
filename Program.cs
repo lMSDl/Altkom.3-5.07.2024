@@ -5,7 +5,7 @@ using Altkom._3_5._07._2024.SOLID.L;
 
 
 
-Altkom._3_5._07._2024.DesignPatterns.Structural.Composite.Client.Execute();
+Altkom._3_5._07._2024.DesignPatterns.Structural.Decorator.Client.Execute();
 
 
 
