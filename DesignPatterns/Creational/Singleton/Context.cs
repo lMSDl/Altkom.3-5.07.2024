@@ -10,7 +10,7 @@ namespace Altkom._3_5._07._2024.DesignPatterns.Creational.Singleton
     {
         private readonly Dictionary<string, string> _settings = new Dictionary<string, string>();
 
-        public Context()
+        private Context()
         {
             Console.WriteLine("Inicjalizacja ustawień");
 
@@ -27,5 +27,49 @@ namespace Altkom._3_5._07._2024.DesignPatterns.Creational.Singleton
         {
             _settings[key] = value;
         }
+
+        private static Context _instance;
+        /*public static Context GetIntance()
+        {
+            if(_instance is null)
+                _instance = new Context();
+            return _instance;
+        }*/
+
+        private static object locker = new object();
+        /*public static Context GetIntance()
+        {
+            lock (locker)
+            {
+                if (_instance is null)
+                    _instance = new Context();
+                return _instance;
+            }
+        } */
+
+        public static Context GetIntance()
+        {
+            if (_instance is null)
+            {
+                lock (locker)
+                {
+                    if (_instance is null)
+                        _instance = new Context();
+                }
+            }
+            return _instance;
+        }
+
+
+        static Context()
+        {
+        }
+        public static Context Instance { get; } = new Context();
+
+        /*private static Lazy<Context> _lazyInstance = new Lazy<Context>( () => new Context());
+        public static Context GetInstace()
+        {
+            return _lazyInstance.Value;
+        }*/
     }
 }
