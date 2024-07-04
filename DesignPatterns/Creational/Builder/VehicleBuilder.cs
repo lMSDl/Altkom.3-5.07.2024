@@ -38,7 +38,7 @@ namespace Altkom._3_5._07._2024.DesignPatterns.Creational.Builder
 
         public Vehicle Build()
         {
-            return Vehicle;
+            return (Vehicle)Vehicle.Clone();
         }
     }
 }
