@@ -45,6 +45,9 @@ namespace Altkom._3_5._07._2024.DesignPatterns.Creational.Builder
         public int? TrunkCapacity { get; set; }
         public int? EnginePower { get; set; }
 
+        public string Manufacturer { get; set; }
+        public DateTime ProductionDate { get; set; }
+
         public object Clone()
         {
             return MemberwiseClone();
