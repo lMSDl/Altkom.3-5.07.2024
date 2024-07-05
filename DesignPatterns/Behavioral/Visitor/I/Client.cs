@@ -13,11 +13,16 @@
                 new Hyperlink() {Text = "Hyperlink",  Link=@"https:\\some.url.pl"}
 };
 
-            foreach (var item in collection)
+            /*foreach (var item in collection)
             {
                 Console.Write(item.ToHtml());
-            }
+            }*/
 
+            var visitor = new HtmlVisitor();
+            foreach (var item in collection)
+            {
+                Console.Write(item.Accept(visitor));
+            }
         }
     }
 }
