@@ -5,7 +5,7 @@ using Altkom._3_5._07._2024.SOLID.L;
 
 
 
-Altkom._3_5._07._2024.DesignPatterns.Behavioral.ChainOfResponsibility.II.Client.Execute();
+Altkom._3_5._07._2024.DesignPatterns.Behavioral.Command.Client.Execute();
 
 
 
