@@ -11,7 +11,7 @@ namespace Altkom._3_5._07._2024.DesignPatterns.Behavioral.NullObject
     {
         public static void Execute()
         {
-            var objects = new AbstractObject[] { new RealObject(), null };
+            var objects = new AbstractObject[] { new RealObject(), new NullObject() };
             var random = new Random();
 
             while (true)
@@ -21,15 +21,9 @@ namespace Altkom._3_5._07._2024.DesignPatterns.Behavioral.NullObject
 
                 var item = objects[value];
 
-                /*if (item == null)
-                    continue;*/
-
-                /*if (item is null)
-                    continue;*/
-
-                item?.Method1();
-                item?.Method2();
-                item?.Method3();
+                item.Method1();
+                item.Method2();
+                item.Method3();
             }
         }
     }
