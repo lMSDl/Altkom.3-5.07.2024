@@ -5,7 +5,7 @@ using Altkom._3_5._07._2024.SOLID.L;
 
 
 
-Altkom._3_5._07._2024.DesignPatterns.Behavioral.TemplateMethod.Client.Execute();
+Altkom._3_5._07._2024.DesignPatterns.Behavioral.Visitor.I.Client.Execute();
 
 
 
