@@ -6,32 +6,29 @@ using System.Threading.Tasks;
 
 namespace Altkom._3_5._07._2024.DesignPatterns.Behavioral.TemplateMethod
 {
-    internal class DbLogger
+    internal class DbLogger : Logger<DbLog, DatabaseService>
     {
-        public void Log(string message)
+        protected override void Save(DbLog item, DatabaseService service)
         {
-            var messageToLog = SerializeMessage(message);
-            var service = ConnectToDatabase();
-            InsertLogMessageToTable(service, messageToLog);
-            CloseDbConnection(service);
+            service.Insert(item);
         }
-        private DbLog SerializeMessage(string message)
+
+        protected override string PrepareMessage(string message)
+        {
+            return message;
+        }
+
+        protected override DbLog CreateItem(string message)
         {
             Console.WriteLine("Serializing message");
             return new DbLog { DateTime = DateTime.Now, Message = message };
         }
-        private DatabaseService ConnectToDatabase()
+
+        protected override DatabaseService GetService()
         {
             Console.WriteLine("Connecting to Database.");
             return new DatabaseService();
         }
-        private void InsertLogMessageToTable(DatabaseService service, DbLog message)
-        {
-            service.Insert(message);
-        }
-        private void CloseDbConnection(DatabaseService service)
-        {
-            service.Dispose();
-        }
+
     }
 }
